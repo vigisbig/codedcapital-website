@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodedCapital — Algorithmic Trading Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf8f4;
+            --white: #ffffff;
+            --ink: #1a1a2e;
+            --ink-light: #4a4a6a;
+            --ink-muted: #8888aa;
+            --accent: #2563eb;
+            --accent-light: #dbeafe;
+            --accent-soft: #eff6ff;
+            --green: #059669;
+            --green-light: #d1fae5;
+            --amber: #d97706;
+            --amber-light: #fef3c7;
+            --violet: #7c3aed;
+            --violet-light: #ede9fe;
+            --rose: #e11d48;
+            --rose-light: #ffe4e6;
+            --teal: #0d9488;
+            --teal-light: #ccfbf1;
+            --border: #e8e4dc;
+            --shadow-sm: 0 1px 3px rgba(26,26,46,0.06), 0 1px 2px rgba(26,26,46,0.04);
+            --shadow-md: 0 4px 16px rgba(26,26,46,0.08), 0 2px 6px rgba(26,26,46,0.05);
+            --shadow-lg: 0 12px 40px rgba(26,26,46,0.10), 0 4px 12px rgba(26,26,46,0.06);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,248,244,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--ink-light);
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white !important;
+            padding: 0.45rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500 !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: #1d4ed8 !important; color: white !important; }
+
+        /* ── Hero ── */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 7rem 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--ink-light);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+        }
+
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--ink);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.15s;
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-card-title {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-dot {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.78rem;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .status-dot::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            color: var(--ink-muted);
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .stat-value.green { color: var(--green); }
+        .stat-value.red { color: var(--rose); }
+
+        .strategy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .strategy-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 0.8rem;
+            background: var(--cream);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 0.82rem;
+        }
+
+        .strategy-name { color: var(--ink-light); font-weight: 400; }
+
+        .strategy-badge {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.15rem 0.5rem;
+            border-radius: 100px;
+        }
+
+        .badge-long { background: var(--green-light); color: var(--green); }
+        .badge-short { background: var(--rose-light); color: var(--rose); }
+        .badge-watch { background: var(--amber-light); color: var(--amber); }
+
+        /* ── Stats strip ── */
+        .stats-strip {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+            padding: 2rem;
+        }
+
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item-num {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+        }
+
+        .stat-item-label {
+            font-size: 0.85rem;
+            color: var(--ink-muted);
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+
+        /* ── Features ── */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--ink-light);
+            font-weight: 300;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Feature grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 14px 14px 0 0;
+        }
+
+        .feature-card.blue::before { background: var(--accent); }
+        .feature-card.green::before { background: var(--green); }
+        .feature-card.amber::before { background: var(--amber); }
+        .feature-card.violet::before { background: var(--violet); }
+        .feature-card.rose::before { background: var(--rose); }
+        .feature-card.teal::before { background: var(--teal); }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card.blue .feature-icon { background: var(--accent-soft); }
+        .feature-card.green .feature-icon { background: var(--green-light); }
+        .feature-card.amber .feature-icon { background: var(--amber-light); }
+        .feature-card.violet .feature-icon { background: var(--violet-light); }
+        .feature-card.rose .feature-icon { background: var(--rose-light); }
+        .feature-card.teal .feature-icon { background: var(--teal-light); }
+
+        .feature-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 0.2rem 0.55rem;
+            border-radius: 100px;
+            border: 1px solid;
+        }
+
+        .feature-card.blue .tag { border-color: #bfdbfe; color: var(--accent); background: var(--accent-soft); }
+        .feature-card.green .tag { border-color: #a7f3d0; color: var(--green); background: var(--green-light); }
+        .feature-card.amber .tag { border-color: #fde68a; color: var(--amber); background: var(--amber-light); }
+        .feature-card.violet .tag { border-color: #ddd6fe; color: var(--violet); background: var(--violet-light); }
+        .feature-card.rose .tag { border-color: #fecdd3; color: var(--rose); background: var(--rose-light); }
+        .feature-card.teal .tag { border-color: #99f6e4; color: var(--teal); background: var(--teal-light); }
+
+        /* ── Architecture strip ── */
+        .arch-strip {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .arch-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .arch-text h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .arch-text p {
+            font-size: 0.95rem;
+            color: var(--ink-light);
+            font-weight: 300;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .arch-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .arch-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--ink-light);
+        }
+
+        .arch-list li::before {
+            content: '✓';
+            color: var(--green);
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .tech-item {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.1rem;
+        }
+
+        .tech-item-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-item-value {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-box h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-box p {
+            font-size: 1rem;
+            color: var(--ink-light);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            background: white;
+            padding: 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .footer-logo span { color: var(--accent); }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: var(--ink-muted);
+        }
+
+        /* ── Animations ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+        .fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
+            .hero-visual { display: none; }
+            .features-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+            .arch-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .tech-grid { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
+            .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="logo">Coded<span>Capital</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="nav-cta">Get Access</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">For Indian Equity Markets</div>
+            <h1>Algorithmic trading,<br><em>built for precision</em></h1>
+            <p>A self-hosted algorithmic trading platform for NSE and BSE. Run institutional-grade strategies with full control over your capital, your data, and your logic.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Request Access →</a>
+                <a href="#features" class="btn-secondary">See Features</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <span class="hero-card-title">Live Strategies</span>
+                    <span class="status-dot">Market Open</span>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-box">
+                        <div class="stat-label">Portfolio Value</div>
+                        <div class="stat-value">₹14.2L</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Today P&L</div>
+                        <div class="stat-value green">+₹8,420</div>
+                    </div>
+                </div>
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <span class="strategy-name">Volume Breakout · RELIANCE</span>
+                        <span class="strategy-badge badge-long">Long</span>
+                    </div>
+                    <div class="strategy-item">
+                        <span class="strategy-name">Gap Down · HDFCBANK</span>
+                        <span class="strategy-badge badge-short">Short</span>
+                    </div>
+                    <div class="strategy-item">
+                        <span class="strategy-name">Stochastic High · INFY</span>
+                        <span class="strategy-badge badge-watch">Watching</span>
+                    </div>
+                    <div class="strategy-item">
+                        <span class="strategy-name">Slope Up · TCS</span>
+                        <span class="strategy-badge badge-long">Long</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div>
+            <div class="stat-item-num">NSE + BSE</div>
+            <div class="stat-item-label">Exchange Coverage</div>
+        </div>
+        <div>
+            <div class="stat-item-num">1m → 1d</div>
+            <div class="stat-item-label">Multi-timeframe Data</div>
+        </div>
+        <div>
+            <div class="stat-item-num">Self-hosted</div>
+            <div class="stat-item-label">Your Data, Your Server</div>
+        </div>
+        <div>
+            <div class="stat-item-num">Real-time</div>
+            <div class="stat-item-label">WebSocket Tick Feed</div>
+        </div>
+    </div>
+</div>
+
+<!-- Features -->
+<section class="section" id="features">
+    <div class="section-header">
+        <div class="section-tag">Platform Features</div>
+        <h2 class="section-title">Everything you need to trade algorithmically</h2>
+        <p class="section-sub">Six deep capability areas covering the full lifecycle of an algorithmic trading operation.</p>
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card blue fade-in">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Algorithmic Trading Engine</div>
+            <div class="feature-desc">Execute long and short strategies with precision. Manage MIS and CNC products, configure hard and trailing stop losses, and switch logic automatically after a set time.</div>
+            <div class="feature-tags">
+                <span class="tag">Long &amp; Short</span>
+                <span class="tag">Trailing SL</span>
+                <span class="tag">Hard SL</span>
+                <span class="tag">MIS / CNC</span>
+                <span class="tag">Config Bank</span>
+                <span class="tag">Ratings</span>
+            </div>
+        </div>
+
+        <div class="feature-card green fade-in">
+            <div class="feature-icon">🔔</div>
+            <div class="feature-title">Alerts Engine</div>
+            <div class="feature-desc">Stay informed on every significant market event. Configurable alerts with Telegram notifications and exponential backoff retry — so you never miss a critical signal.</div>
+            <div class="feature-tags">
+                <span class="tag">Telegram Alerts</span>
+                <span class="tag">Signal Notifications</span>
+                <span class="tag">Real-time</span>
+            </div>
+        </div>
+
+        <div class="feature-card amber fade-in">
+            <div class="feature-icon">📊</div>
+            <div class="feature-title">Portfolio Management</div>
+            <div class="feature-desc">Track holdings, monitor invested value, and analyse performance across tranches. FIFO sell logic, cumulative snapshot tracking, and a full tradebook with monthly breakdowns.</div>
+            <div class="feature-tags">
+                <span class="tag">Holdings Tracker</span>
+                <span class="tag">FIFO Logic</span>
+                <span class="tag">Tradebook</span>
+                <span class="tag">Snapshots</span>
+            </div>
+        </div>
+
+        <div class="feature-card rose fade-in">
+            <div class="feature-icon">🛡️</div>
+            <div class="feature-title">Risk Management</div>
+            <div class="feature-desc">Risk-first architecture. Define leverage limits, set exposure caps, and use blocklist-gated execution to ensure orders only fire when all risk conditions are satisfied.</div>
+            <div class="feature-tags">
+                <span class="tag">Risk-first Strategy</span>
+                <span class="tag">Leverage Control</span>
+                <span class="tag">Blocklists</span>
+                <span class="tag">Execution Gates</span>
+            </div>
+        </div>
+
+        <div class="feature-card violet fade-in">
+            <div class="feature-icon">🔀</div>
+            <div class="feature-title">Custom Parallel Strategies</div>
+            <div class="feature-desc">Run multiple independent strategies simultaneously. Choose between single-step and multi-step pipeline architectures, each with configurable signal provenance tracking.</div>
+            <div class="feature-tags">
+                <span class="tag">Single-step</span>
+                <span class="tag">Multi-step</span>
+                <span class="tag">Parallel Execution</span>
+                <span class="tag">Signal Tracking</span>
+            </div>
+        </div>
+
+        <div class="feature-card teal fade-in">
+            <div class="feature-icon">🔬</div>
+            <div class="feature-title">Technical Research</div>
+            <div class="feature-desc">Deep multi-timeframe analysis tools. Detect candlestick patterns, analyse momentum divergences, and screen for high-probability setups across your entire watchlist.</div>
+            <div class="feature-tags">
+                <span class="tag">Engulfing Patterns</span>
+                <span class="tag">ROC</span>
+                <span class="tag">RSI</span>
+                <span class="tag">RSI Divergence</span>
+                <span class="tag">Volume Divergence</span>
+                <span class="tag">EMA</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Architecture -->
+<div class="arch-strip" id="technology">
+    <div class="arch-inner">
+        <div class="arch-text">
+            <div class="section-tag">Built on Solid Foundations</div>
+            <h2>Institutional-grade infrastructure, self-hosted</h2>
+            <p>CodedCapital runs on your own server. Your trading data never leaves your infrastructure. Built on battle-tested open source components used by financial institutions worldwide.</p>
+            <ul class="arch-list">
+                <li>Real-time tick data via WebSocket from Shoonya / Finvasia</li>
+                <li>TimescaleDB hypertables for efficient time-series storage</li>
+                <li>Multi-timeframe continuous aggregates from 1m to 1d</li>
+                <li>PostgreSQL streaming replication for high availability</li>
+                <li>Streamlit dashboard — accessible from any browser</li>
+            </ul>
+        </div>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-item-label">Database</div>
+                <div class="tech-item-value">PostgreSQL 18 + TimescaleDB</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Data Feed</div>
+                <div class="tech-item-value">Shoonya WebSocket API</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Interface</div>
+                <div class="tech-item-value">Streamlit Dashboard</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Language</div>
+                <div class="tech-item-value">Python</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Exchanges</div>
+                <div class="tech-item-value">NSE &amp; BSE</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-item-label">Deployment</div>
+                <div class="tech-item-value">Self-hosted Linux</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-box">
+        <div class="section-tag">Early Access</div>
+        <h2>Ready to trade with an edge?</h2>
+        <p>CodedCapital is available for select traders on Indian equity markets. Get in touch to discuss access.</p>
+        <a href="mailto:hello@codedcapital.in" class="btn-primary">Contact Us →</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <a href="#" class="footer-logo">Coded<span>Capital</span></a>
+        <p class="footer-copy">© 2026 CodedCapital. Built for Indian equity markets.</p>
+    </div>
+</footer>
+
+</body>
+</html>
