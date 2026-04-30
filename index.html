@@ -682,7 +682,7 @@
         <div class="hero-content">
             <div class="hero-eyebrow">For Indian Equity Markets</div>
             <h1>Algorithmic trading,<br><em>built for precision</em></h1>
-            <p>A self-hosted algorithmic trading platform for NSE and BSE. Run institutional-grade strategies with full control over your capital, your data, and your logic.</p>
+            <p>An algorithmic trading platform for NSE. Run institutional-grade strategies with full control over your capital, your data, and your logic.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">Request Access →</a>
                 <a href="#features" class="btn-secondary">See Features</a>
@@ -731,16 +731,16 @@
 <div class="stats-strip">
     <div class="stats-inner">
         <div>
-            <div class="stat-item-num">NSE + BSE</div>
+            <div class="stat-item-num">NSE</div>
             <div class="stat-item-label">Exchange Coverage</div>
         </div>
         <div>
-            <div class="stat-item-num">1m → 1d</div>
+            <div class="stat-item-num">1 minute → 1 day</div>
             <div class="stat-item-label">Multi-timeframe Data</div>
         </div>
         <div>
-            <div class="stat-item-num">Self-hosted</div>
-            <div class="stat-item-label">Your Data, Your Server</div>
+            <div class="stat-item-num">VPS-hosted</div>
+            <div class="stat-item-label">For any-time access</div>
         </div>
         <div>
             <div class="stat-item-num">Real-time</div>
@@ -762,7 +762,7 @@
         <div class="feature-card blue fade-in">
             <div class="feature-icon">⚡</div>
             <div class="feature-title">Algorithmic Trading Engine</div>
-            <div class="feature-desc">Execute long and short strategies with precision. Manage MIS and CNC products, configure hard and trailing stop losses, and switch logic automatically after a set time.</div>
+            <div class="feature-desc">Execute long and short strategies with precision. Manage multiple (MIS and CNC) products independently, configure hard stop-loss and trailing stop-loss, and switch logic automatically after a set time.</div>
             <div class="feature-tags">
                 <span class="tag">Long &amp; Short</span>
                 <span class="tag">Trailing SL</span>
@@ -776,7 +776,7 @@
         <div class="feature-card green fade-in">
             <div class="feature-icon">🔔</div>
             <div class="feature-title">Alerts Engine</div>
-            <div class="feature-desc">Stay informed on every significant market event. Configurable alerts with Telegram notifications and exponential backoff retry — so you never miss a critical signal.</div>
+            <div class="feature-desc">Stay informed on every significant technical shift in the structue on your favourite stocks. Configurable alerts with Telegram notifications — so you never miss a critical signal.</div>
             <div class="feature-tags">
                 <span class="tag">Telegram Alerts</span>
                 <span class="tag">Signal Notifications</span>
@@ -787,19 +787,17 @@
         <div class="feature-card amber fade-in">
             <div class="feature-icon">📊</div>
             <div class="feature-title">Portfolio Management</div>
-            <div class="feature-desc">Track holdings, monitor invested value, and analyse performance across tranches. FIFO sell logic, cumulative snapshot tracking, and a full tradebook with monthly breakdowns.</div>
+            <div class="feature-desc">Track holdings, monitor invested value, and analyse performance. Book profit as per pre-set logic or let the winners run until your desired logic gets triggered. With limited risk, go short on the loss-making counters if opportunity arrives and book before end of day.</div>
             <div class="feature-tags">
                 <span class="tag">Holdings Tracker</span>
-                <span class="tag">FIFO Logic</span>
                 <span class="tag">Tradebook</span>
-                <span class="tag">Snapshots</span>
             </div>
         </div>
 
         <div class="feature-card rose fade-in">
             <div class="feature-icon">🛡️</div>
             <div class="feature-title">Risk Management</div>
-            <div class="feature-desc">Risk-first architecture. Define leverage limits, set exposure caps, and use blocklist-gated execution to ensure orders only fire when all risk conditions are satisfied.</div>
+            <div class="feature-desc">Risk-first architecture. Define leverage limits, set exposure caps, and use blocklist-gated execution to ensure orders only fire when all risk conditions are satisfied. With a couple of clicks, switch strategy using the configuration bank to mitigate systemic and unsystemic risks</div>
             <div class="feature-tags">
                 <span class="tag">Risk-first Strategy</span>
                 <span class="tag">Leverage Control</span>
@@ -811,7 +809,7 @@
         <div class="feature-card violet fade-in">
             <div class="feature-icon">🔀</div>
             <div class="feature-title">Custom Parallel Strategies</div>
-            <div class="feature-desc">Run multiple independent strategies simultaneously. Choose between single-step and multi-step pipeline architectures, each with configurable signal provenance tracking.</div>
+            <div class="feature-desc">Run multiple independent strategies simultaneously. Choose between single-step and multi-step pipeline architectures, each with configurable signal provenance tracking. Enter and exit using fully-automated systems.</div>
             <div class="feature-tags">
                 <span class="tag">Single-step</span>
                 <span class="tag">Multi-step</span>
@@ -823,7 +821,7 @@
         <div class="feature-card teal fade-in">
             <div class="feature-icon">🔬</div>
             <div class="feature-title">Technical Research</div>
-            <div class="feature-desc">Deep multi-timeframe analysis tools. Detect candlestick patterns, analyse momentum divergences, and screen for high-probability setups across your entire watchlist.</div>
+            <div class="feature-desc">Deep multi-timeframe analysis tools. Detect candlestick patterns, analyse momentum divergences, and screen for high-probability long and short setups across your entire watchlist.</div>
             <div class="feature-tags">
                 <span class="tag">Engulfing Patterns</span>
                 <span class="tag">ROC</span>
@@ -843,11 +841,11 @@
         <div class="arch-text">
             <div class="section-tag">Built on Solid Foundations</div>
             <h2>Institutional-grade infrastructure, self-hosted</h2>
-            <p>CodedCapital runs on your own server. Your trading data never leaves your infrastructure. Built on battle-tested open source components used by financial institutions worldwide.</p>
+            <p>CodedCapital runs on a dedicated VPS provisioned for each customer, to provide 24x7 access to research and execution tools. Built on battle-tested open source components used by financial institutions worldwide.</p>
             <ul class="arch-list">
                 <li>Real-time tick data via WebSocket from Shoonya / Finvasia</li>
                 <li>TimescaleDB hypertables for efficient time-series storage</li>
-                <li>Multi-timeframe continuous aggregates from 1m to 1d</li>
+                <li>Multi-timeframe continuous aggregates from 1 minute to 1 day</li>
                 <li>PostgreSQL streaming replication for high availability</li>
                 <li>Streamlit dashboard — accessible from any browser</li>
             </ul>
@@ -871,11 +869,11 @@
             </div>
             <div class="tech-item">
                 <div class="tech-item-label">Exchanges</div>
-                <div class="tech-item-value">NSE &amp; BSE</div>
+                <div class="tech-item-value">NSE</div>
             </div>
             <div class="tech-item">
                 <div class="tech-item-label">Deployment</div>
-                <div class="tech-item-value">Self-hosted Linux</div>
+                <div class="tech-item-value">Linux</div>
             </div>
         </div>
     </div>
