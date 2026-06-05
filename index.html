@@ -34,7 +34,6 @@
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -73,17 +72,13 @@
             text-decoration: none;
             letter-spacing: -0.02em;
         }
-
-        .logo span {
-            color: var(--accent);
-        }
+        .logo span { color: var(--accent); }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--ink-light);
@@ -91,7 +86,6 @@
             font-weight: 400;
             transition: color 0.2s;
         }
-
         .nav-links a:hover { color: var(--accent); }
 
         .nav-cta {
@@ -102,7 +96,6 @@
             font-weight: 500 !important;
             transition: background 0.2s !important;
         }
-
         .nav-cta:hover { background: #1d4ed8 !important; color: white !important; }
 
         /* ── Hero ── */
@@ -130,7 +123,6 @@
             border-radius: 100px;
             margin-bottom: 1.5rem;
         }
-
         .hero-eyebrow::before {
             content: '';
             width: 6px;
@@ -148,7 +140,6 @@
             color: var(--ink);
             margin-bottom: 1.25rem;
         }
-
         .hero h1 em {
             font-style: italic;
             color: var(--accent);
@@ -183,7 +174,6 @@
             transition: background 0.2s, transform 0.15s;
             box-shadow: 0 2px 8px rgba(37,99,235,0.25);
         }
-
         .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
 
         .btn-secondary {
@@ -200,14 +190,9 @@
             border: 1px solid var(--border);
             transition: border-color 0.2s, transform 0.15s;
         }
-
         .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
         /* Hero visual */
-        .hero-visual {
-            position: relative;
-        }
-
         .hero-card {
             background: white;
             border-radius: 16px;
@@ -239,7 +224,6 @@
             color: var(--green);
             font-weight: 500;
         }
-
         .status-dot::before {
             content: '';
             width: 7px;
@@ -248,7 +232,6 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
@@ -267,29 +250,12 @@
             padding: 0.9rem 1rem;
             border: 1px solid var(--border);
         }
-
-        .stat-label {
-            font-size: 0.72rem;
-            color: var(--ink-muted);
-            font-weight: 400;
-            margin-bottom: 0.2rem;
-        }
-
-        .stat-value {
-            font-family: 'Fraunces', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--ink);
-        }
-
+        .stat-label { font-size: 0.72rem; color: var(--ink-muted); font-weight: 400; margin-bottom: 0.2rem; }
+        .stat-value { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 600; color: var(--ink); }
         .stat-value.green { color: var(--green); }
         .stat-value.red { color: var(--rose); }
 
-        .strategy-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+        .strategy-list { display: flex; flex-direction: column; gap: 0.5rem; }
 
         .strategy-item {
             display: flex;
@@ -301,7 +267,6 @@
             border: 1px solid var(--border);
             font-size: 0.82rem;
         }
-
         .strategy-name { color: var(--ink-light); font-weight: 400; }
 
         .strategy-badge {
@@ -310,41 +275,52 @@
             padding: 0.15rem 0.5rem;
             border-radius: 100px;
         }
-
         .badge-long { background: var(--green-light); color: var(--green); }
         .badge-short { background: var(--rose-light); color: var(--rose); }
         .badge-watch { background: var(--amber-light); color: var(--amber); }
 
-        /* ── Stats strip ── */
-        .stats-strip {
+        /* ── Value strip (replaces old stats strip) ── */
+        .value-strip {
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             background: white;
-            padding: 2rem;
+            padding: 2.25rem 2rem;
         }
 
-        .stats-inner {
+        .value-inner {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
+            gap: 1rem;
         }
 
-        .stat-item-num {
-            font-family: 'Fraunces', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: -0.03em;
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 0.5rem 0;
         }
 
-        .stat-item-label {
-            font-size: 0.85rem;
+        .value-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .value-item-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+
+        .value-item-desc {
+            font-size: 0.8rem;
             color: var(--ink-muted);
-            font-weight: 400;
-            margin-top: 0.2rem;
+            font-weight: 300;
+            line-height: 1.5;
         }
 
         /* ── Features ── */
@@ -406,24 +382,19 @@
         .feature-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             border-radius: 14px 14px 0 0;
         }
 
-        .feature-card.blue::before { background: var(--accent); }
-        .feature-card.green::before { background: var(--green); }
-        .feature-card.amber::before { background: var(--amber); }
+        .feature-card.blue::before   { background: var(--accent); }
+        .feature-card.green::before  { background: var(--green); }
+        .feature-card.amber::before  { background: var(--amber); }
         .feature-card.violet::before { background: var(--violet); }
-        .feature-card.rose::before { background: var(--rose); }
-        .feature-card.teal::before { background: var(--teal); }
+        .feature-card.rose::before   { background: var(--rose); }
+        .feature-card.teal::before   { background: var(--teal); }
 
-        .feature-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
+        .feature-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
         .feature-icon {
             width: 42px;
@@ -436,12 +407,12 @@
             margin-bottom: 1rem;
         }
 
-        .feature-card.blue .feature-icon { background: var(--accent-soft); }
-        .feature-card.green .feature-icon { background: var(--green-light); }
-        .feature-card.amber .feature-icon { background: var(--amber-light); }
+        .feature-card.blue .feature-icon   { background: var(--accent-soft); }
+        .feature-card.green .feature-icon  { background: var(--green-light); }
+        .feature-card.amber .feature-icon  { background: var(--amber-light); }
         .feature-card.violet .feature-icon { background: var(--violet-light); }
-        .feature-card.rose .feature-icon { background: var(--rose-light); }
-        .feature-card.teal .feature-icon { background: var(--teal-light); }
+        .feature-card.rose .feature-icon   { background: var(--rose-light); }
+        .feature-card.teal .feature-icon   { background: var(--teal-light); }
 
         .feature-title {
             font-family: 'Fraunces', serif;
@@ -460,11 +431,7 @@
             margin-bottom: 1rem;
         }
 
-        .feature-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
         .tag {
             font-size: 0.72rem;
@@ -474,95 +441,133 @@
             border: 1px solid;
         }
 
-        .feature-card.blue .tag { border-color: #bfdbfe; color: var(--accent); background: var(--accent-soft); }
-        .feature-card.green .tag { border-color: #a7f3d0; color: var(--green); background: var(--green-light); }
-        .feature-card.amber .tag { border-color: #fde68a; color: var(--amber); background: var(--amber-light); }
-        .feature-card.violet .tag { border-color: #ddd6fe; color: var(--violet); background: var(--violet-light); }
-        .feature-card.rose .tag { border-color: #fecdd3; color: var(--rose); background: var(--rose-light); }
-        .feature-card.teal .tag { border-color: #99f6e4; color: var(--teal); background: var(--teal-light); }
+        .feature-card.blue .tag   { border-color: #bfdbfe; color: var(--accent);  background: var(--accent-soft); }
+        .feature-card.green .tag  { border-color: #a7f3d0; color: var(--green);   background: var(--green-light); }
+        .feature-card.amber .tag  { border-color: #fde68a; color: var(--amber);   background: var(--amber-light); }
+        .feature-card.violet .tag { border-color: #ddd6fe; color: var(--violet);  background: var(--violet-light); }
+        .feature-card.rose .tag   { border-color: #fecdd3; color: var(--rose);    background: var(--rose-light); }
+        .feature-card.teal .tag   { border-color: #99f6e4; color: var(--teal);    background: var(--teal-light); }
 
-        /* ── Architecture strip ── */
-        .arch-strip {
+        /* ── How it works ── */
+        .how-strip {
             background: white;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
-        .arch-inner {
+        .how-inner {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
+        }
+
+        .how-steps {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+            position: relative;
         }
 
-        .arch-text h2 {
+        /* connector line between steps */
+        .how-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: calc(16.66% + 1rem);
+            right: calc(16.66% + 1rem);
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .how-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .how-step-num {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-soft);
+            border: 2px solid var(--accent-light);
+            color: var(--accent);
             font-family: 'Fraunces', serif;
-            font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+            font-size: 1.3rem;
             font-weight: 600;
-            letter-spacing: -0.025em;
-            color: var(--ink);
-            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
         }
 
-        .arch-text p {
-            font-size: 0.95rem;
+        .how-step h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .how-step p {
+            font-size: 0.875rem;
             color: var(--ink-light);
             font-weight: 300;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
+            line-height: 1.65;
         }
 
-        .arch-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+        /* ── Why section ── */
+        .why-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
         }
 
-        .arch-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            font-size: 0.88rem;
-            color: var(--ink-light);
-        }
-
-        .arch-list li::before {
-            content: '✓';
-            color: var(--green);
-            font-weight: 600;
-            flex-shrink: 0;
-            margin-top: 0.05rem;
-        }
-
-        .tech-grid {
+        .why-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
         }
 
-        .tech-item {
-            background: var(--cream);
+        .why-card {
+            background: white;
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem 1.1rem;
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
         }
 
-        .tech-item-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--ink-muted);
-            margin-bottom: 0.25rem;
+        .why-card:hover { box-shadow: var(--shadow-sm); }
+
+        .why-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
         }
 
-        .tech-item-value {
-            font-size: 0.88rem;
-            font-weight: 500;
+        .why-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--ink);
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
+        }
+
+        .why-card p {
+            font-size: 0.855rem;
+            color: var(--ink-light);
+            font-weight: 300;
+            line-height: 1.65;
         }
 
         /* ── CTA ── */
@@ -622,13 +627,9 @@
             color: var(--ink);
             text-decoration: none;
         }
-
         .footer-logo span { color: var(--accent); }
 
-        .footer-copy {
-            font-size: 0.82rem;
-            color: var(--ink-muted);
-        }
+        .footer-copy { font-size: 0.82rem; color: var(--ink-muted); }
 
         /* ── Animations ── */
         .fade-in {
@@ -636,10 +637,7 @@
             transform: translateY(20px);
             animation: fadeIn 0.6s ease forwards;
         }
-
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
         .fade-in:nth-child(1) { animation-delay: 0.1s; }
         .fade-in:nth-child(2) { animation-delay: 0.2s; }
@@ -653,9 +651,10 @@
             .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem 3rem; }
             .hero-visual { display: none; }
             .features-grid { grid-template-columns: 1fr; }
-            .stats-inner { grid-template-columns: 1fr 1fr; }
-            .arch-inner { grid-template-columns: 1fr; gap: 2rem; }
-            .tech-grid { grid-template-columns: 1fr 1fr; }
+            .value-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+            .how-steps { grid-template-columns: 1fr; }
+            .how-steps::before { display: none; }
+            .why-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
@@ -669,7 +668,7 @@
         <a href="#" class="logo">Coded<span>Capital</span></a>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
-            <li><a href="#technology">Technology</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#contact" class="nav-cta">Get Access</a></li>
         </ul>
@@ -682,7 +681,7 @@
         <div class="hero-content">
             <div class="hero-eyebrow">For Indian Equity Markets</div>
             <h1>Algorithmic trading,<br><em>built for precision</em></h1>
-            <p>An algorithmic trading platform for NSE. Run institutional-grade strategies with full control over your capital, your data, and your logic.</p>
+            <p>A complete trading platform for NSE. Run proven strategies, manage your portfolio, and stay protected by built-in risk controls — all from your browser, around the clock.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-primary">Request Access →</a>
                 <a href="#features" class="btn-secondary">See Features</a>
@@ -700,7 +699,7 @@
                         <div class="stat-value">₹14.2L</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-label">Today P&L</div>
+                        <div class="stat-label">Today P&amp;L</div>
                         <div class="stat-value green">+₹8,420</div>
                     </div>
                 </div>
@@ -727,24 +726,36 @@
     </div>
 </section>
 
-<!-- Stats -->
-<div class="stats-strip">
-    <div class="stats-inner">
-        <div>
-            <div class="stat-item-num">NSE</div>
-            <div class="stat-item-label">Exchange Coverage</div>
+<!-- Value strip -->
+<div class="value-strip">
+    <div class="value-inner">
+        <div class="value-item">
+            <div class="value-icon">🎯</div>
+            <div>
+                <div class="value-item-title">Automated Execution</div>
+                <div class="value-item-desc">Strategies run and adjust positions without you watching the screen.</div>
+            </div>
         </div>
-        <div>
-            <div class="stat-item-num">1 minute → 1 day</div>
-            <div class="stat-item-label">Multi-timeframe Data</div>
+        <div class="value-item">
+            <div class="value-icon">🔔</div>
+            <div>
+                <div class="value-item-title">Always-on Alerts</div>
+                <div class="value-item-desc">Get notifications on Telegram, monitor dashboard status remotely.</div>
+            </div>
         </div>
-        <div>
-            <div class="stat-item-num">VPS-hosted</div>
-            <div class="stat-item-label">For any-time access</div>
+        <div class="value-item">
+            <div class="value-icon">🛡️</div>
+            <div>
+                <div class="value-item-title">Built-in Risk Controls</div>
+                <div class="value-item-desc">Stop-loss, leverage caps and blocklists protect every single trade.</div>
+            </div>
         </div>
-        <div>
-            <div class="stat-item-num">Real-time</div>
-            <div class="stat-item-label">WebSocket Tick Feed</div>
+        <div class="value-item">
+            <div class="value-icon">📱</div>
+            <div>
+                <div class="value-item-title">Access from Anywhere</div>
+                <div class="value-item-desc">Runs 24×7 on a dedicated server. Open your browser and you're in.</div>
+            </div>
         </div>
     </div>
 </div>
@@ -761,8 +772,8 @@
 
         <div class="feature-card blue fade-in">
             <div class="feature-icon">⚡</div>
-            <div class="feature-title">Algorithmic Trading Engine</div>
-            <div class="feature-desc">Execute long and short strategies with precision. Manage multiple (MIS and CNC) products independently, configure hard stop-loss and trailing stop-loss, and switch logic automatically after a set time.</div>
+            <div class="feature-title">Automated Trading Engine</div>
+            <div class="feature-desc">Go long or short with full automation. Place orders, move stop-losses as the trade develops, and switch from aggressive to conservative logic automatically after a time you set — no babysitting required.</div>
             <div class="feature-tags">
                 <span class="tag">Long &amp; Short</span>
                 <span class="tag">Trailing SL</span>
@@ -776,10 +787,10 @@
         <div class="feature-card green fade-in">
             <div class="feature-icon">🔔</div>
             <div class="feature-title">Alerts Engine</div>
-            <div class="feature-desc">Stay informed on every significant technical shift in the structure of your favourite stocks. Configurable alerts with Telegram notifications — so you never miss a critical signal.</div>
+            <div class="feature-desc">Know the moment something important happens in any stock you're watching. Configurable signals fire instant Telegram notifications — so you can act fast or let the system act for you.</div>
             <div class="feature-tags">
                 <span class="tag">Telegram Alerts</span>
-                <span class="tag">Signal Notifications</span>
+                <span class="tag">Multiple Signals</span>
                 <span class="tag">Real-time</span>
             </div>
         </div>
@@ -787,9 +798,10 @@
         <div class="feature-card amber fade-in">
             <div class="feature-icon">📊</div>
             <div class="feature-title">Portfolio Management</div>
-            <div class="feature-desc">Track holdings, monitor invested value, and analyse performance. Book profit as per pre-set logic or let the winners run until your desired logic gets triggered. With limited risk, go short on the loss-making counters if opportunity arrives and book before end of day.</div>
+            <div class="feature-desc">See your holdings, invested value, and daily P&amp;L in one place. Book profit on pre-set rules, let winners run, or open short positions against underperforming counters — all with a few clicks.</div>
             <div class="feature-tags">
                 <span class="tag">Holdings Tracker</span>
+                <span class="tag">P&amp;L Dashboard</span>
                 <span class="tag">Tradebook</span>
             </div>
         </div>
@@ -797,19 +809,19 @@
         <div class="feature-card rose fade-in">
             <div class="feature-icon">🛡️</div>
             <div class="feature-title">Risk Management</div>
-            <div class="feature-desc">Risk-first architecture. Define leverage limits, set exposure caps, and use blocklist-gated execution to ensure orders only fire when all risk conditions are satisfied. With a couple of clicks, switch strategy using the configuration bank to mitigate systemic and unsystemic risks</div>
+            <div class="feature-desc">Every order passes through a risk gate before it fires. Set leverage limits, cap your exposure, and use blocklists to keep problem stocks out entirely. Switch strategy in two clicks if conditions change.</div>
             <div class="feature-tags">
-                <span class="tag">Risk-first Strategy</span>
                 <span class="tag">Leverage Control</span>
+                <span class="tag">Exposure Caps</span>
                 <span class="tag">Blocklists</span>
-                <span class="tag">Execution Gates</span>
+                <span class="tag">One-click Switch</span>
             </div>
         </div>
 
         <div class="feature-card violet fade-in">
             <div class="feature-icon">🔀</div>
-            <div class="feature-title">Custom Parallel Strategies</div>
-            <div class="feature-desc">Run multiple independent strategies simultaneously. Choose between single-step and multi-step pipeline architectures, each with configurable signal provenance tracking. Enter and exit using fully-automated systems.</div>
+            <div class="feature-title">Parallel Strategies</div>
+            <div class="feature-desc">Run multiple strategies at the same time, each with its own logic. Use a two-step pipeline — one strategy shortlists candidates, a second validates and commits — for higher-conviction entries and exits.</div>
             <div class="feature-tags">
                 <span class="tag">Single-step</span>
                 <span class="tag">Multi-step</span>
@@ -821,7 +833,7 @@
         <div class="feature-card teal fade-in">
             <div class="feature-icon">🔬</div>
             <div class="feature-title">Technical Research</div>
-            <div class="feature-desc">Deep multi-timeframe analysis tools. Detect candlestick patterns, analyse momentum divergences, and screen for high-probability long and short setups across your entire watchlist.</div>
+            <div class="feature-desc">Scan your entire watchlist across multiple timeframes in seconds. Spot momentum divergences, candlestick patterns, and trend signals that would take hours to find manually.</div>
             <div class="feature-tags">
                 <span class="tag">Engulfing Patterns</span>
                 <span class="tag">ROC</span>
@@ -835,49 +847,72 @@
     </div>
 </section>
 
-<!-- Architecture -->
-<div class="arch-strip" id="technology">
-    <div class="arch-inner">
-        <div class="arch-text">
-            <div class="section-tag">Built on Solid Foundations</div>
-            <h2>Institutional-grade infrastructure, self-hosted</h2>
-            <p>CodedCapital runs on a dedicated VPS provisioned for each customer, to provide 24x7 access to research and execution tools. Built on battle-tested open source components used by financial institutions worldwide.</p>
-            <ul class="arch-list">
-                <li>Real-time tick data via WebSocket from Shoonya / Finvasia</li>
-                <li>TimescaleDB hypertables for efficient time-series storage</li>
-                <li>Multi-timeframe continuous aggregates from 1 minute to 1 day</li>
-                <li>PostgreSQL streaming replication for high availability</li>
-                <li>Streamlit dashboard — accessible from any browser</li>
-            </ul>
+<!-- How it works -->
+<div class="how-strip" id="how-it-works">
+    <div class="how-inner">
+        <div class="section-header" style="margin-bottom: 0;">
+            <div class="section-tag">How it works</div>
+            <h2 class="section-title">From signal to trade, automatically</h2>
+            <p class="section-sub">CodedCapital watches the market for you, fires signals when conditions are met, and executes trades according to your rules.</p>
         </div>
-        <div class="tech-grid">
-            <div class="tech-item">
-                <div class="tech-item-label">Database</div>
-                <div class="tech-item-value">PostgreSQL 18 + TimescaleDB</div>
+        <div class="how-steps">
+            <div class="how-step">
+                <div class="how-step-num">1</div>
+                <h3>Configure your strategy</h3>
+                <p>Pick your strategy, set your risk parameters — stop-loss levels, position size, leverage — and save it as a named config, that you can switch in and out anytime.</p>
             </div>
-            <div class="tech-item">
-                <div class="tech-item-label">Data Feed</div>
-                <div class="tech-item-value">Shoonya WebSocket API</div>
+            <div class="how-step">
+                <div class="how-step-num">2</div>
+                <h3>Market scans &amp; signals</h3>
+                <p>The platform continuously scans NSE stocks across timeframes. When a qualifying signal appears, it queues the trade for execution.</p>
             </div>
-            <div class="tech-item">
-                <div class="tech-item-label">Interface</div>
-                <div class="tech-item-value">Streamlit Dashboard</div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-item-label">Language</div>
-                <div class="tech-item-value">Python</div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-item-label">Exchanges</div>
-                <div class="tech-item-value">NSE</div>
-            </div>
-            <div class="tech-item">
-                <div class="tech-item-label">Deployment</div>
-                <div class="tech-item-value">Linux</div>
+            <div class="how-step">
+                <div class="how-step-num">3</div>
+                <h3>Automated entry &amp; exit</h3>
+                <p>Orders are placed, stop-losses trail automatically, and positions are squared off when your targets or risk limits are hit — with or without you at the screen.</p>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Why CodedCapital -->
+<section class="why-section">
+    <div class="section-header">
+        <div class="section-tag">Why CodedCapital</div>
+        <h2 class="section-title">Designed for the serious retail trader</h2>
+        <p class="section-sub">Built from the ground up for Indian equity markets, by traders who understand what it takes to be consistent.</p>
+    </div>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-icon">🇮🇳</div>
+            <div>
+                <h3>Built for NSE, not adapted for it</h3>
+                <p>Every feature — from stock screeners to order types — is designed around how Indian equity markets actually work, not retrofitted from a generic global product.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">⏰</div>
+            <div>
+                <h3>Runs while you sleep</h3>
+                <p>Your instance is live 24×7, monitoring markets during hours and sending you alerts. Setup as you need it - Let the computer actively trade or let it simply be an observer.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🔒</div>
+            <div>
+                <h3>Your account, your control</h3>
+                <p>CodedCapital connects directly to your broker account. Your capital never moves through us — you always have full control and can override or pause at any time.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-icon">🧩</div>
+            <div>
+                <h3>No coding required</h3>
+                <p>Configure strategies, manage risk, and run research entirely through a clean browser interface. Powerful capabilities without writing a single line of code.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
