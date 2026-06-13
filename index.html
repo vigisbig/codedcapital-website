@@ -52,7 +52,7 @@
             background: rgba(250,248,244,0.92);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .nav-inner {
@@ -60,8 +60,8 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            height: 150px;
+            justify-content: flex-start;
+            height: 100px;
         }
 
         .logo {
@@ -71,12 +71,13 @@
             color: var(--ink);
             text-decoration: none;
             letter-spacing: -0.02em;
+            flex-shrink: 0;
         }
         .logo span { color: var(--accent); }
 
         .logo-img {
             display: block;
-            height: 130px;
+            height: 110px;
             width: auto;
         }
 
@@ -84,6 +85,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            margin-left: auto;
         }
         .nav-links a {
             text-decoration: none;
